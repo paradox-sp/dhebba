@@ -13,7 +13,6 @@ class AppProvider implements NyProvider {
       languageCode: languageCode,
       assetsDirectory: assetsDirectory,
     );
-
     nylo.addLoader(loader);
     nylo.addLogo(logo);
     nylo.addThemes(appThemes);
@@ -25,13 +24,11 @@ class AppProvider implements NyProvider {
 
     // Optional
     // nylo.showDateTimeInLogs(); // Show date time in logs
-    // nylo.monitorAppUsage(); // Monitor the app usage
+    nylo.monitorAppUsage(); // Monitor the app usage
 
     return nylo;
   }
 
   @override
-  afterBoot(Nylo nylo) async {
-
-  }
+  afterBoot(Nylo nylo) async {}
 }

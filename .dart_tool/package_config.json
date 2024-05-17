@@ -344,6 +344,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nfc_manager",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nfc_manager-3.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "nylo_framework",
       "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nylo_framework-5.26.2",
       "packageUri": "lib/",
@@ -692,7 +698,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-05-01T10:43:42.987934Z",
+  "generated": "2024-05-17T16:02:36.424528Z",
   "generator": "pub",
   "generatorVersion": "3.3.3"
 }

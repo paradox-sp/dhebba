@@ -3,17 +3,14 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 class NfcPage extends NyStatefulWidget {
   static const path = '/nfc';
-  
+
   NfcPage({super.key}) : super(path, child: _NfcPageState());
 }
 
 class _NfcPageState extends NyState<NfcPage> {
-
   @override
-  init() async {
+  init() async {}
 
-  }
-  
   /// Use boot if you need to load data before the [view] is rendered.
   // @override
   // boot() async {
@@ -23,11 +20,9 @@ class _NfcPageState extends NyState<NfcPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Nfc")
-      ),
+      appBar: AppBar(title: Center(child: Text("Nfc"))),
       body: SafeArea(
-         child: Container(),
+        child: Container(),
       ),
     );
   }

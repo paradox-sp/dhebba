@@ -1,3 +1,8 @@
+import 'package:flutter_app/resources/pages/account_page.dart';
+
+import '/resources/pages/profile_page.dart';
+import '/resources/pages/statement_page.dart';
+import '/resources/pages/appusage_page.dart';
 import '/resources/pages/main_page.dart';
 import '/resources/pages/nfc_page.dart';
 import '/resources/pages/signout_page.dart';
@@ -35,4 +40,8 @@ appRouter() => nyRoutes((router) {
       router.route(SignoutPage.path, (context) => SignoutPage());
       router.route(NfcPage.path, (context) => NfcPage());
       router.route(MainPage.path, (context) => MainPage());
+      router.route(AppusagePage.path, (context) => AppusagePage());
+      router.route(StatementPage.path, (context) => StatementPage());
+      router.route(ProfilePage.path, (context) => ProfilePage());
+      router.route(AccountPage.path, (context) => AccountPage());
     });

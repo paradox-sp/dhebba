@@ -6,7 +6,8 @@ import 'controller.dart';
 
 class HomeController extends Controller {
   onTapDocumentation() async {
-    await launchUrl(Uri.parse("https://nylo.dev/docs"));
+    await launchUrl(
+        Uri.parse("https://github.com/sriza-n/dhebba/blob/main/README.md"));
   }
 
   onTapGithub() async {
@@ -14,7 +15,7 @@ class HomeController extends Controller {
   }
 
   onTapChangeLog() async {
-    await launchUrl(Uri.parse("https://github.com/nylo-core/nylo/releases"));
+    await launchUrl(Uri.parse("https://github.com/sriza-n/dhebba/releases"));
   }
 
   onTapYouTube() async {

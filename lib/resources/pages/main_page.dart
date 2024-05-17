@@ -35,7 +35,8 @@ class _MainPageState extends NyState<MainPage> {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage('assets/user_photo.jpg'),
+                  backgroundImage:
+                      AssetImage('public/assets/images/profile.jpg'),
                 ),
                 SizedBox(width: 16),
                 Column(

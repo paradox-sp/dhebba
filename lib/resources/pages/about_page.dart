@@ -63,13 +63,13 @@ class _AboutPageState extends NyState<AboutPage> {
               Text(
                 getEnv("APP_NAME"),
               ).displayMedium(context),
-              const Text("Micro-framework for Flutter",
-                      textAlign: TextAlign.center)
-                  .titleMedium(context)
-                  .setColor(context, (color) => color.primaryAccent),
-              const Text(
-                "Build something amazing 💡",
-              ).bodyMedium(context).alignCenter(),
+              // const Text("Micro-framework for Flutter",
+              //         textAlign: TextAlign.center)
+              //     .titleMedium(context)
+              //     .setColor(context, (color) => color.primaryAccent),
+              // const Text(
+              //   "Build something amazing 💡",
+              // ).bodyMedium(context).alignCenter(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -131,11 +131,11 @@ class _AboutPageState extends NyState<AboutPage> {
                       ),
                     ),
                   ),
-                  const Text(
-                    "Framework Version: $nyloVersion",
-                  )
-                      .bodyMedium(context)
-                      .setColor(context, (color) => Colors.grey),
+                  // const Text(
+                  //   "Framework Version: $nyloVersion",
+                  // )
+                  //     .bodyMedium(context)
+                  //     .setColor(context, (color) => Colors.grey),
                   if (!context.isDarkMode)
                     Switch(
                         value: isThemeDark,
