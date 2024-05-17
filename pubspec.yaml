@@ -33,6 +33,7 @@ dependencies:
   flutter_map: ^6.1.0
   flutter_compass: ^0.8.0
   nfc_manager: ^3.4.0
+  fluttertoast: ^8.2.5
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
