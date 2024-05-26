@@ -57,7 +57,7 @@ class _NfcPageState extends NyState<NfcPage> with TickerProviderStateMixin {
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.blue, width: 15),
+                border: Border.all(width: 80),
               ),
               width: radius * 2,
               height: radius * 2,
@@ -83,20 +83,26 @@ class _NfcPageState extends NyState<NfcPage> with TickerProviderStateMixin {
           ),
           ElevatedButton(
             onPressed: _startNFCWriting,
-            child: Text('Push',
-                style: TextStyle(
-                    color: ThemeColor.get(context)
-                        .primaryContent // Color - primary content
-                    )),
+            child: Text(
+              'Push',
+              style: TextStyle(
+                color: ThemeColor.get(context)
+                    .primaryContent // Color - primary content
+                ,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
-              // foregroundColor: Colors.black,
+              foregroundColor: Colors.black,
               backgroundColor:
                   Colors.transparent, // change the text color as needed
               shape: CircleBorder(),
               padding: EdgeInsets.all(50),
               side: BorderSide(
-                  color: Color.fromARGB(255, 28, 108, 173),
-                  width: 2), // add a border if needed
+                  color: ThemeColor.get(context).primaryContent,
+                  // color: Color.fromARGB(255, 28, 108, 173),
+                  width: 0.5), // add a border if needed
             ),
           ),
         ],
