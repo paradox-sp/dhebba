@@ -1,3 +1,2 @@
-2024/05/17-22:12:35.116 241c Reusing MANIFEST C:\Users\kozus\AppData\Local\Temp\flutter_tools.f090f1f5\flutter_tools_chrome_device.85412635\Default\Asset Store\assets.db/MANIFEST-000001
-2024/05/17-22:12:35.123 241c Recovering log #7
-2024/05/17-22:12:35.127 241c Reusing old log C:\Users\kozus\AppData\Local\Temp\flutter_tools.f090f1f5\flutter_tools_chrome_device.85412635\Default\Asset Store\assets.db/000007.log 
+2024/05/25-12:50:41.130 760 Creating DB C:\Users\kozus\AppData\Local\Temp\flutter_tools.b2bcb862\flutter_tools_chrome_device.90b6fe1f\Default\Asset Store\assets.db since it was missing.
+2024/05/25-12:50:45.685 760 Reusing MANIFEST C:\Users\kozus\AppData\Local\Temp\flutter_tools.b2bcb862\flutter_tools_chrome_device.90b6fe1f\Default\Asset Store\assets.db/MANIFEST-000001

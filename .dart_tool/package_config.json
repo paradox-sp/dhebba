@@ -21,7 +21,7 @@
     },
     {
       "name": "archive",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/archive-3.5.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/archive-3.5.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -54,12 +54,6 @@
       "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/checked_yaml-2.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.19"
-    },
-    {
-      "name": "cli_dialog",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/cli_dialog-0.5.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
     },
     {
       "name": "cli_util",
@@ -99,7 +93,7 @@
     },
     {
       "name": "dart_console",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/dart_console-1.2.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/dart_console-4.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -114,6 +108,12 @@
       "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/equatable-2.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "error_stack",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/error_stack-1.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "fake_async",
@@ -143,13 +143,7 @@
       "name": "flutter",
       "rootUri": "file:///D:/apps/flutter_windows/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
-    },
-    {
-      "name": "flutter_compass",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_compass-0.8.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_dotenv",
@@ -177,37 +171,37 @@
     },
     {
       "name": "flutter_secure_storage",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage-9.0.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage-9.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_secure_storage_linux",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_linux-1.2.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_linux-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_secure_storage_macos",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_macos-3.0.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_macos-3.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_secure_storage_platform_interface",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_platform_interface-1.0.2",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_platform_interface-1.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_secure_storage_web",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_web-1.1.2",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_web-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "flutter_secure_storage_windows",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_windows-3.0.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage_windows-3.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -227,7 +221,7 @@
       "name": "flutter_test",
       "rootUri": "file:///D:/apps/flutter_windows/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.3"
     },
     {
       "name": "flutter_web_plugins",
@@ -315,9 +309,9 @@
     },
     {
       "name": "intl",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.19.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "js",
@@ -339,21 +333,21 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker-10.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-2.0.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "leak_tracker_testing",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/leak_tracker_testing-3.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.2"
     },
     {
       "name": "lists",
@@ -363,7 +357,7 @@
     },
     {
       "name": "logger",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/logger-2.2.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/logger-2.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -381,7 +375,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.11.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.12.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -399,13 +393,13 @@
     },
     {
       "name": "nylo_framework",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nylo_framework-5.26.2",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nylo_framework-5.27.5",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "nylo_support",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nylo_support-5.67.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/nylo_support-5.69.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -441,9 +435,9 @@
     },
     {
       "name": "path_provider_foundation",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.3.2",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_foundation-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "path_provider_linux",
@@ -537,9 +531,9 @@
     },
     {
       "name": "shared_preferences_foundation",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.3.5",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences_foundation-2.4.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.2"
     },
     {
       "name": "shared_preferences_linux",
@@ -615,7 +609,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.6.1",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.7.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -651,7 +645,7 @@
     },
     {
       "name": "url_launcher_ios",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_ios-6.2.5",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_ios-6.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -663,9 +657,9 @@
     },
     {
       "name": "url_launcher_macos",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_macos-3.1.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/url_launcher_macos-3.2.0",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "url_launcher_platform_interface",
@@ -705,9 +699,9 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-13.0.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-14.2.1",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.3"
     },
     {
       "name": "watcher",
@@ -723,9 +717,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.5.0",
+      "rootUri": "file:///C:/Users/kozus/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.5.1",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.4"
     },
     {
       "name": "wkt_parser",
@@ -758,7 +752,10 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-05-18T03:12:41.577792Z",
+  "generated": "2024-05-25T07:09:00.331483Z",
   "generator": "pub",
-  "generatorVersion": "3.3.3"
+  "generatorVersion": "3.4.1",
+  "flutterRoot": "file:///D:/apps/flutter_windows/flutter",
+  "flutterVersion": "3.22.1",
+  "pubCache": "file:///C:/Users/kozus/AppData/Local/Pub/Cache"
 }

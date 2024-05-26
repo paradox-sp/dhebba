@@ -4,7 +4,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 import 'package:flutter_map/flutter_map.dart';
 // import 'package:http/http.dart' as http;
 import 'package:latlong2/latlong.dart';
-import 'package:geolocator/geolocator.dart';
+// import 'package:geolocator/geolocator.dart';
 // import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math';
 import 'dart:async';
@@ -43,19 +43,19 @@ class _MapPageState extends NyState<MapPage> {
     // });
   }
 
-  Future<LatLng> _getCurrentLocation() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    return LatLng(position.latitude, position.longitude);
-  }
+  // Future<LatLng> _getCurrentLocation() async {
+  //   Position position = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high);
+  //   return LatLng(position.latitude, position.longitude);
+  // }
 
-  void _updateLocation() async {
-    LatLng currentLocation = await _getCurrentLocation();
-    _mapController.move(currentLocation, _mapController.zoom);
-  }
+  // void _updateLocation() async {
+  //   LatLng currentLocation = await _getCurrentLocation();
+  //   _mapController.move(currentLocation, _mapController.zoom);
+  // }
 
   Future<void> _initializeMarker() async {
-    LatLng currentLocation = await _getCurrentLocation();
+    // LatLng currentLocation = await _getCurrentLocation();
     setState(() {
       _markers.add(
         Marker(
@@ -200,11 +200,11 @@ class _MapPageState extends NyState<MapPage> {
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _updateLocation,
-        tooltip: 'Update Location',
-        child: const Icon(Icons.location_on),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _updateLocation,
+      //   tooltip: 'Update Location',
+      //   child: const Icon(Icons.location_on),
+      // ),
     );
     // if (_isLoading) const Center(child: CircularProgressIndicator()),
     // Positioned(

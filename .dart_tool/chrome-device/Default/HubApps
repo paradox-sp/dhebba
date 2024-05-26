@@ -924,9 +924,9 @@
       "description": "Check email while staying in your flow",
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_dark.png/1.12.10/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_hc.png/1.12.10/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_light.png/1.12.10/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_dark.png/1.12.11/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_hc.png/1.12.11/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_light.png/1.12.11/asset"
          }
       },
       "id": "8682d0fa-50b3-4ece-aa5b-e0b33f9919e2",
@@ -937,25 +937,6 @@
       "manifest_version": 3,
       "microfeedback": {
          "area_path": "Features\\Sidebar\\Outlook",
-         "dislike": {
-            "description_override": "How can we improve Outlook in the sidebar?",
-            "options": [ "I don't like that the side pane opens automatically", "It takes up too much space on my screen", "Outlook was not signed in with the correct profile", "The wrong email was opened", "Seeing the email on the side was not helpful to me", "The side pane was slow to open", "Other" ],
-            "other_option_support": true,
-            "prompt": "Tell us why you are not satisfied"
-         },
-         "like": {
-            "description_override": "Tell us what you like about Outlook in the sidebar",
-            "options": [ "I like that my email opens side-by-side with the web link", "I like that I can keep tabs on my inbox and calendar without switching between tabs", "I like that Microsoft 365 web apps are just a click away", "Other" ],
-            "other_option_support": true,
-            "prompt": "Tell us what you like"
-         },
-         "locations": {
-            "auto_open_settings_page": {
-               "item_id": 0,
-               "item_name": "Auto-open settings page",
-               "prompt": "Are you satisfied with Outlook in the sidebar?"
-            }
-         },
          "service_id": "39f2d170-852b-4e8b-aa58-04e34218acef"
       },
       "name": "Outlook",
@@ -971,7 +952,7 @@
       },
       "trusted_domains": [ "live.com", "office.com", "microsoftonline.com", "microsoft.com", "office365.com" ],
       "trusted_types": [ "default", "dompurify" ],
-      "version": "1.12.10"
+      "version": "1.12.11"
    }, {
       "capabilities|flight:msDesignerSinglePrompt": {
          "enable_force_dark_mode": true
@@ -1694,9 +1675,9 @@
       },
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_dark.png/1.5.7/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_hc.png/1.5.7/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_light.png/1.5.7/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_dark.png/1.5.8/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_hc.png/1.5.8/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_light.png/1.5.8/asset"
          }
       },
       "id": "bc25fcef-8964-4e72-8287-23e2b496c128",
@@ -1706,25 +1687,6 @@
       "manifest_version": 3,
       "microfeedback": {
          "area_path": "Features\\Sidebar\\Teams",
-         "dislike": {
-            "description_override": "How can we improve Teams in the sidebar?",
-            "options": [ "I don't like that the side pane opens automatically", "It takes up too much space on my screen", "Teams was not signed in with the correct browser", "The wrong chat was opened", "Seeing the chat on the side was not helpful to me", "The side pane was slow to open", "Other" ],
-            "other_option_support": true,
-            "prompt": "Tell us why you are not satisfied"
-         },
-         "like": {
-            "description_override": "Tell us what you like about Teams in the sidebar",
-            "options": [ "I like that my chat opens side-by-side with the web link", "I like that I can keep tabs on my chat without switching tabs", "I like that Microsoft 365 web apps are just a click away", "Other" ],
-            "other_option_support": true,
-            "prompt": "Tell us what you like"
-         },
-         "locations": {
-            "auto_open_settings_page": {
-               "item_id": 0,
-               "item_name": "teams hub app setting page",
-               "prompt": "Are you satisfied with Teams in the sidebar?"
-            }
-         },
          "service_id": "ef98a99f-f053-44be-939d-5875c41c09b3"
       },
       "name": "Teams",
@@ -1735,7 +1697,7 @@
       "target": {
          "url": "https://teams.microsoft.com/embed-client/chats/list?layout=singlePane&hostCtx=edge"
       },
-      "version": "1.5.7"
+      "version": "1.5.8"
    }, {
       "capabilities": {
          "show_domain_in_header": true
