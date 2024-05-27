@@ -17,30 +17,28 @@ class UserApiService extends NyApiService {
       var response = await http.post(
         Uri.parse(baseUrl + "/auth/signin/"),
         headers: <String, String>{
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: {
-          'emailOrPhone': emailOrPhone,
+        body: jsonEncode(<String, String>{
+          'emailorphone': emailOrPhone,
           'password': password,
-        },
+        }),
       );
 
       if (response.statusCode == 200) {
-        // Handle successful login
-        print(jsonDecode(response.body));
-        print(response.statusCode);
-        print('login successful');
-        print('POST request was successful.');
+        var jsonResponse = jsonDecode(response.body);
+        print(jsonResponse);
+        if (jsonResponse['success'] != null) {
+          print('Login Successful: User ID is ${jsonResponse['user_id']}');
+          return jsonResponse;
+        } else {
+          print('Failed to login: ${jsonResponse['error']}');
+        }
       } else {
-        // Handle errors or unsuccessful login
-        print(jsonDecode(response.body));
-        print(response.statusCode);
-        print('login failed');
+        print('Request failed with status: ${response.statusCode}.');
       }
-      return response.statusCode;
     } catch (e) {
-      print('Error occurred: $e');
-      return null;
+      print('Exception caught: $e');
     }
   }
 }

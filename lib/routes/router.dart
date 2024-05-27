@@ -34,9 +34,10 @@ appRouter() => nyRoutes((router) {
       //
       //   router.route(AccountPage.path, (context) => AccountPage());
       // });
-      router.route(NavPage.path, (context) => NavPage(), initialRoute: true);
+      router.route(NavPage.path, (context) => NavPage());
       router.route(MapPage.path, (context) => MapPage());
-      router.route(SigninPage.path, (context) => SigninPage());
+      router.route(SigninPage.path, (context) => SigninPage(),
+          initialRoute: true);
       router.route(SignoutPage.path, (context) => SignoutPage());
       router.route(NfcPage.path, (context) => NfcPage());
       router.route(MainPage.path, (context) => MainPage());

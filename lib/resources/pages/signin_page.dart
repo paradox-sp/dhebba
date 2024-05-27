@@ -11,13 +11,9 @@ class SigninPage extends NyStatefulWidget {
 }
 
 class _SigninPageState extends NyState<SigninPage> {
-  final TextEditingController _tfEmail = TextEditingController();
-  final TextEditingController _tfPassword = TextEditingController();
-  bool _isLoading = false; // Define _isLoading variable
+  final _tfEmail = TextEditingController();
+  final _tfPassword = TextEditingController();
 
-  get emailOrPhoneController => null;
-
-  get passwordController => null;
   // final AuthController _authController = AuthController();
 
   @override
@@ -39,43 +35,40 @@ class _SigninPageState extends NyState<SigninPage> {
     print(user?.token);
 
     // 3 - Save the user to Nylo
-    // await Auth.set(user);
+    await Auth.set(user);
   }
 
   @override
   Widget view(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Signin"),
+        title: Text('Sign In'),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               TextFormField(
-                controller: emailOrPhoneController,
+                controller: _tfEmail,
                 decoration: InputDecoration(
                   labelText: 'Email or Phone',
+                  hintText: 'Enter your email or phone number',
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 10),
               TextFormField(
-                controller: passwordController,
+                controller: _tfPassword,
                 decoration: InputDecoration(
                   labelText: 'Password',
+                  hintText: 'Enter your password',
                 ),
                 obscureText: true,
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _isLoading
-                    ? null
-                    : _login, // Make sure this is correctly referencing your sign-in function
-                child: _isLoading
-                    ? CircularProgressIndicator(color: Colors.white)
-                    : Text('Sign In'),
+                onPressed: _login,
+                child: Text('Sign In'),
               ),
             ],
           ),
