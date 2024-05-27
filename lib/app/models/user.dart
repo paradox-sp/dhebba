@@ -11,6 +11,8 @@ class User extends Model {
     email = data['email'];
   }
 
+  Object? get token => null;
+
   @override
   toJson() => {"name": name, "email": email};
 }

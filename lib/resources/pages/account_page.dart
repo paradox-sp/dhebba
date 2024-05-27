@@ -59,7 +59,9 @@ class _AccountPageState extends NyState<AccountPage> {
             ),
             SizedBox(height: 16),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () async {
+                await Auth.remove();
+              },
               icon: Icon(Icons.logout),
               label: Text('Logout'),
             ),

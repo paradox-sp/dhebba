@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nylo_framework/nylo_framework.dart';
+import '/app/controllers/bank_controller.dart';
 
-class MainPage extends NyStatefulWidget {
+class MainPage extends NyStatefulWidget<BankController> {
   static const path = '/main';
 
   MainPage({super.key}) : super(path, child: _MainPageState());
@@ -94,15 +95,11 @@ class _MainPageState extends NyState<MainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  // Load Amount functionality
-                },
+                onPressed: widget.controller.onTapload,
                 child: Text('Load Amount'),
               ),
               ElevatedButton(
-                onPressed: () {
-                  // Send Amount functionality
-                },
+                onPressed: widget.controller.onTapsend,
                 child: Text('Send Amount'),
               ),
             ],
