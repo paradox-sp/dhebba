@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/resources/pages/nav_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '../models/user.dart';
@@ -53,7 +54,8 @@ class SignupController extends NyController {
       print(jsonResponse);
       Fluttertoast.showToast(msg: '${jsonResponse}');
       if (jsonResponse['success'] != null) {
-        Navigator.pushReplacementNamed(context, '/signin');
+        // Navigator.pushReplacementNamed(context, '/signin');
+        routeTo(NavPage.path, navigationType: NavigationType.pushAndForgetAll);
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');

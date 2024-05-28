@@ -8,7 +8,9 @@ import '/app/controllers/controller.dart';
 class BankController extends Controller {
   String get baseUrl => getEnv('API_BASE_URL');
   onTapload() async {
-    await launchUrl(Uri.parse(baseUrl + "/bank/load_with_bank_account"));
+    int userid = await NyStorage.read("userid");
+    await launchUrl(
+        Uri.parse(baseUrl + '/bank/load_with_bank_account/${userid}'));
   }
 
   onTapsend() async {
