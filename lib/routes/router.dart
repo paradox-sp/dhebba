@@ -5,7 +5,6 @@ import '/resources/pages/statement_page.dart';
 import '/resources/pages/appusage_page.dart';
 import '/resources/pages/main_page.dart';
 import '/resources/pages/nfc_page.dart';
-import '/resources/pages/signout_page.dart';
 import '/resources/pages/signin_page.dart';
 import '/resources/pages/map_page.dart';
 import '../resources/pages/nav_page.dart';
@@ -34,11 +33,10 @@ appRouter() => nyRoutes((router) {
       //
       //   router.route(AccountPage.path, (context) => AccountPage());
       // });
-      router.route(NavPage.path, (context) => NavPage());
+      router.route(NavPage.path, (context) => NavPage(), authPage: true);
       router.route(MapPage.path, (context) => MapPage());
       router.route(SigninPage.path, (context) => SigninPage(),
           initialRoute: true);
-      router.route(SignoutPage.path, (context) => SignoutPage());
       router.route(NfcPage.path, (context) => NfcPage());
       router.route(MainPage.path, (context) => MainPage());
       router.route(AppusagePage.path, (context) => AppusagePage());

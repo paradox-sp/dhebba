@@ -24,21 +24,44 @@ class UserApiService extends NyApiService {
           'password': password,
         }),
       );
+      return response;
 
-      if (response.statusCode == 200) {
-        var jsonResponse = jsonDecode(response.body);
-        print(jsonResponse);
-        if (jsonResponse['success'] != null) {
-          print('Login Successful: User ID is ${jsonResponse['user_id']}');
-          return jsonResponse;
-        } else {
-          print('Failed to login: ${jsonResponse['error']}');
-        }
-      } else {
-        print('Request failed with status: ${response.statusCode}.');
-      }
+      // if (response.statusCode == 200) {
+      //   var jsonResponse = jsonDecode(response.body);
+      //   print(jsonResponse);
+      //   if (jsonResponse['success'] != null) {
+      //     print('Login Successful: User ID is ${jsonResponse['user_id']}');
+      //     // print(jsonResponse['user_id']);
+
+      //     return jsonResponse['user_id'];
+      //   } else {
+      //     print('Failed to login: ${jsonResponse['error']}');
+      //   }
+      // } else {
+      //   print('Request failed with status: ${response.statusCode}.');
+      // }
     } catch (e) {
       print('Exception caught: $e');
+    }
+  }
+
+  Future<dynamic> getUserDetail() async {
+    try {
+      var response = await http.get(
+        Uri.parse(baseUrl + "/fare/user/1"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      if (response.statusCode == 200) {
+        print(jsonDecode(response.body));
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load user detail');
+      }
+    } catch (e) {
+      print(e);
+      return null;
     }
   }
 }

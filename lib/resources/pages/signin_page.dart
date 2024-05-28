@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/networking/user_api_service.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-// import '../../app/controllers/auth_controller.dart';
+import '../../app/controllers/auth_controller.dart';
 import '../../app/models/user.dart';
 
 class SigninPage extends NyStatefulWidget {
@@ -13,6 +13,7 @@ class SigninPage extends NyStatefulWidget {
 class _SigninPageState extends NyState<SigninPage> {
   final _tfEmail = TextEditingController();
   final _tfPassword = TextEditingController();
+  final _loginController = LoginController();
 
   // final AuthController _authController = AuthController();
 
@@ -25,21 +26,22 @@ class _SigninPageState extends NyState<SigninPage> {
   //
   // }
 
-  _login() async {
-    print("Sign-in method called");
-    // 1 - Example register via an API Service
-    User? user = await api<UserApiService>(
-        (request) => request.login(_tfEmail.text, _tfPassword.text));
+  // _login() async {
+  //   print("Sign-in method called");
+  //   // 1 - Example register via an API Service
+  //   User? user = await api<UserApiService>(
+  //       (request) => request.login(_tfEmail.text, _tfPassword.text));
 
-    // 2 - Returns the users session token
-    print(user?.token);
+  //   // 2 - Returns the users session token
+  //   print(user?.token);
 
-    // 3 - Save the user to Nylo
-    await Auth.set(user);
-  }
+  //   // 3 - Save the user to Nylo
+  //   await Auth.set(user);
+  // }
 
   @override
   Widget view(BuildContext context) {
+    User? user = Auth.user<User>();
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign In'),
@@ -67,7 +69,10 @@ class _SigninPageState extends NyState<SigninPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _login,
+                onPressed: () {
+                  _loginController.login(
+                      context, _tfEmail.text, _tfPassword.text);
+                },
                 child: Text('Sign In'),
               ),
             ],

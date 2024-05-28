@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/pages/appusage_page.dart';
 import 'package:flutter_app/resources/pages/profile_page.dart';
+import 'package:flutter_app/resources/pages/signin_page.dart';
 import 'package:flutter_app/resources/pages/statement_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -61,6 +62,8 @@ class _AccountPageState extends NyState<AccountPage> {
             ElevatedButton.icon(
               onPressed: () async {
                 await Auth.remove();
+                routeTo(SigninPage.path,
+                    navigationType: NavigationType.pushAndForgetAll);
               },
               icon: Icon(Icons.logout),
               label: Text('Logout'),

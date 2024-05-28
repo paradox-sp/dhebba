@@ -1,21 +1,22 @@
 import 'package:nylo_framework/nylo_framework.dart';
 
 class User extends Model {
-  String? success;
-  int? userId;
+  final String success;
+  final int userId;
+  final String? token; // Ensure this is correctly defined
 
-  User();
+  User({required this.success, required this.userId, this.token});
 
-  User.fromJson(Map<String, dynamic> data) {
-    success = data['success'];
-    userId = data['user_id'];
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      success: json['success'],
+      userId: json['user_id'],
+      token: json['token'], // Ensure this key matches the JSON response
+    );
   }
 
-  Object? get token => null;
-
   @override
-  toJson() => {
-        'success': success,
-        'user_id': userId,
-      };
+  String toString() {
+    return 'User{success: $success, userId: $userId}';
+  }
 }
