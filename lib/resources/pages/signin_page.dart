@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/networking/user_api_service.dart';
+import 'package:flutter_app/resources/pages/signup_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '../../app/controllers/auth_controller.dart';
 import '../../app/models/user.dart';
@@ -74,6 +75,18 @@ class _SigninPageState extends NyState<SigninPage> {
                       context, _tfEmail.text, _tfPassword.text);
                 },
                 child: Text('Sign In'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the signup page when the button is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignupPage(),
+                    ),
+                  );
+                },
+                child: Text('Sign Up'),
               ),
             ],
           ),

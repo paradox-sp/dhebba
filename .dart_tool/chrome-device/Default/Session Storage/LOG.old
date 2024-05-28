@@ -1,6 +1,9 @@
-2024/05/28-09:26:07.786 321c Reusing MANIFEST C:\Users\kozus\AppData\Local\Temp\flutter_tools.66f85a1c\flutter_tools_chrome_device.2225739f\Default\Session Storage/MANIFEST-000001
-2024/05/28-09:26:07.788 321c Recovering log #10
-2024/05/28-09:26:07.792 321c Reusing old log C:\Users\kozus\AppData\Local\Temp\flutter_tools.66f85a1c\flutter_tools_chrome_device.2225739f\Default\Session Storage/000010.log 
-2024/05/28-09:26:07.793 321c Delete type=0 #3
-2024/05/28-09:26:07.794 321c Delete type=0 #4
-2024/05/28-09:26:07.794 321c Delete type=0 #7
+2024/05/28-13:04:35.196 22c Reusing MANIFEST C:\Users\kozus\AppData\Local\Temp\flutter_tools.86ab7d9b\flutter_tools_chrome_device.2d5fbbbd\Default\Session Storage/MANIFEST-000001
+2024/05/28-13:04:35.205 22c Recovering log #10
+2024/05/28-13:04:35.212 22c Reusing old log C:\Users\kozus\AppData\Local\Temp\flutter_tools.86ab7d9b\flutter_tools_chrome_device.2d5fbbbd\Default\Session Storage/000010.log 
+2024/05/28-13:04:35.235 22c Delete type=0 #3
+2024/05/28-13:04:35.288 22c Delete type=0 #4
+2024/05/28-13:04:35.288 22c Delete type=0 #7
+2024/05/28-13:23:30.710 22c Level-0 table #14: started
+2024/05/28-13:23:30.728 22c Level-0 table #14: 30744 bytes OK
+2024/05/28-13:23:30.734 22c Delete type=0 #10

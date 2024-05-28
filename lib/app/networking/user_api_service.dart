@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/models/user.dart';
 import '/config/decoders.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:http/http.dart' as http;
@@ -47,8 +48,10 @@ class UserApiService extends NyApiService {
 
   Future<dynamic> getUserDetail() async {
     try {
+      int userid = await NyStorage.read("userid");
+      print(userid);
       var response = await http.get(
-        Uri.parse(baseUrl + "/fare/user/1"),
+        Uri.parse(baseUrl + '/fare/user/${userid}'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -60,6 +63,31 @@ class UserApiService extends NyApiService {
         throw Exception('Failed to load user detail');
       }
     } catch (e) {
+      print(e);
+      return null;
+    }
+  }
+
+  Future<dynamic> signup(String firstName, String lastName, String number,
+      String email, String password1, String password2) async {
+    try {
+      var response = await http.post(
+        Uri.parse(baseUrl + "/auth/signup/"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'firstname': firstName,
+          'lastname': lastName,
+          'number': number,
+          'email': email,
+          'password1': password1,
+          'password2': password2,
+        }),
+      );
+      return response;
+    } catch (e) {
+      // Handle exception
       print(e);
       return null;
     }

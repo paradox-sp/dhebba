@@ -1,3 +1,4 @@
+import '/resources/pages/signup_page.dart';
 import 'package:flutter_app/resources/pages/account_page.dart';
 
 import '/resources/pages/profile_page.dart';
@@ -43,4 +44,5 @@ appRouter() => nyRoutes((router) {
       router.route(StatementPage.path, (context) => StatementPage());
       router.route(ProfilePage.path, (context) => ProfilePage());
       router.route(AccountPage.path, (context) => AccountPage());
-    });
+      router.route(SignupPage.path, (context) => SignupPage());
+});
