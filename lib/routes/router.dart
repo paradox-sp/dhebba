@@ -34,10 +34,9 @@ appRouter() => nyRoutes((router) {
       //
       //   router.route(AccountPage.path, (context) => AccountPage());
       // });
-      router.route(NavPage.path, (context) => NavPage(), authPage: true);
+      router.route(NavPage.path, (context) => NavPage(), initialRoute: true);
       router.route(MapPage.path, (context) => MapPage());
-      router.route(SigninPage.path, (context) => SigninPage(),
-          initialRoute: true);
+      router.route(SigninPage.path, (context) => SigninPage());
       router.route(NfcPage.path, (context) => NfcPage());
       router.route(MainPage.path, (context) => MainPage());
       router.route(AppusagePage.path, (context) => AppusagePage());
@@ -45,4 +44,4 @@ appRouter() => nyRoutes((router) {
       router.route(ProfilePage.path, (context) => ProfilePage());
       router.route(AccountPage.path, (context) => AccountPage());
       router.route(SignupPage.path, (context) => SignupPage());
-});
+    });

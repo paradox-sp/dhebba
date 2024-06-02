@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/pages/nav_page.dart';
+import 'package:flutter_app/resources/pages/signin_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '../models/user.dart';
@@ -23,6 +24,7 @@ class LoginController extends NyController {
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
       print(jsonResponse);
+      Fluttertoast.showToast(msg: '${jsonResponse}');
       if (jsonResponse['success'] != null) {
         print('Login Successful: User ID is ${jsonResponse['user_id']}');
         Navigator.pushReplacementNamed(context, '/nav');
@@ -39,6 +41,7 @@ class LoginController extends NyController {
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
+      Fluttertoast.showToast(msg: '${response.statusCode}');
     }
   }
 }
@@ -55,10 +58,12 @@ class SignupController extends NyController {
       Fluttertoast.showToast(msg: '${jsonResponse}');
       if (jsonResponse['success'] != null) {
         // Navigator.pushReplacementNamed(context, '/signin');
-        routeTo(NavPage.path, navigationType: NavigationType.pushAndForgetAll);
+        routeTo(SigninPage.path,
+            navigationType: NavigationType.pushAndForgetAll);
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');
+      Fluttertoast.showToast(msg: '${response.statusCode}');
     }
   }
 }

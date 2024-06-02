@@ -45,7 +45,7 @@ class _MainPageState extends NyState<MainPage> {
                   print("Data: $data");
                   if (data != null) {
                     return Container(
-                      height: 600, // Adjust this value as needed
+                      // height: 500, // Adjust this value as needed
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
