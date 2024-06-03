@@ -31,13 +31,21 @@ class LoginController extends NyController {
         // print(jsonResponse['user_id']);
         // return jsonResponse['user_id'];
         print(jsonResponse);
-        User? user = User.fromJson(jsonResponse);
+        Map<String, dynamic> userData = jsonResponse;
+        User? user = User.fromJson(userData);
+
         print(user);
         print(user.userId);
         print(user.success);
-        // NyStorage.store("userid", "${user.userId}");
-        await Auth.login(user);
-        routeTo(NavPage.path);
+        // print(user.key);
+
+        // if (user is Map<String, dynamic>) {
+        NyStorage.store("userid", "${user.userId}");
+        // await Auth.set(user, key: 'ajhfdjkhfj');
+        await Auth.login(user, key: 'ajhfdjkhfj');
+        // }
+        routeTo(NavPage.path, navigationType: NavigationType.pushAndForgetAll);
+
         // Navigator.pushReplacementNamed(context, '/nav');
       } else {
         print('Failed to login: ${jsonResponse['error']}');
