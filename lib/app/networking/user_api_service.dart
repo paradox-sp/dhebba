@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/models/user.dart';
+// import 'package:flutter_app/app/models/user.dart';
 import '/config/decoders.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class UserApiService extends NyApiService {
+  String baseUrl = '';
   UserApiService({BuildContext? buildContext})
       : super(buildContext, decoders: modelDecoders);
 
   @override
-  String get baseUrl => getEnv('API_BASE_URL');
+  Future<void> init() async {
+    baseUrl = await NyStorage.read("baseurl");
+  }
 
+  // @override
+  // String get baseUrl => getEnv('API_BASE_URL');
   /// Example API Request
   Future<dynamic> login(String emailOrPhone, String password) async {
     try {
+      print('Making request to: ${baseUrl + "/auth/signin/"}');
       var response = await http.post(
         Uri.parse(baseUrl + "/auth/signin/"),
         headers: <String, String>{

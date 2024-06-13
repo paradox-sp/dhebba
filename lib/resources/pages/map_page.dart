@@ -81,9 +81,39 @@ class _MapPageState extends NyState<MapPage> {
         height: 80.0,
         point: newPosition,
         child: Container(
-          child: Icon(
-            Icons.bus_alert_outlined,
-            color: Colors.red,
+          child: IconButton(
+            icon: Icon(
+              Icons.bus_alert_outlined,
+              color: Colors.red,
+            ), // Replace this with your icon
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    backgroundColor: const Color.fromARGB(28, 0, 0, 0),
+                    title: Text('Bus Details'),
+                    content: Column(
+                      children: <Widget>[
+                        Text(
+                            'Latitude: ${currentPosition.latitude}'), // Replace with your latitude
+                        Text(
+                            'Longitude: ${currentPosition.longitude}'), // Replace with your longitude
+                        // Add more details here
+                      ],
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('Close'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ),
       );

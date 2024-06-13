@@ -43,6 +43,8 @@ class _MainPageState extends NyState<MainPage> {
                 },
                 child: (context, data) {
                   print("Data: $data");
+                  print("phonenumber: ${data['phone/username']}");
+                  NyStorage.store("userphone", "${data['phone/username']}");
                   if (data != null) {
                     return Container(
                       // height: 500, // Adjust this value as needed
