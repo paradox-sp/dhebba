@@ -5,7 +5,7 @@
 # Author: Anthony Gordon <https://github.com/agordn52>
 
 name: flutter_app
-description: A new Nylo Flutter application.
+description: A new Flutter project.
 
 publish_to: 'none'
 
@@ -35,6 +35,8 @@ dependencies:
   nfc_manager: ^3.4.0
   fluttertoast: ^8.2.5
   geolocator: ^12.0.0
+  geolocator_android: 4.5.5
+  
 
   http: any
 dev_dependencies:

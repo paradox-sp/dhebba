@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/bootstrap/helpers.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:nfc_manager/platform_tags.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:flutter_app/config/theme.dart';
@@ -121,16 +123,24 @@ class _NfcPageState extends NyState<NfcPage> with TickerProviderStateMixin {
           try {
             // When an NFC tag is discovered, we check if it supports NDEF technology.
             // If it supports NDEF, create an NDEF message and write it to the tag.
-            NdefMessage message =
-                NdefMessage([NdefRecord.createText('Hello, NFC!')]);
-            await Ndef.from(tag)?.write(message);
+            // NdefMessage message =
+            //     NdefMessage([NdefRecord.createText('Hello, NFC!')]);
+            // await Ndef.from(tag)?.write(message);
+            MifareClassic? mifareClassic = MifareClassic.from(tag);
+            if (mifareClassic != null) {
+              Uint8List data = Uint8List.fromList(
+                  utf8.encode('Hello, NFC!')); // convert string to Uint8List
+              int blockIndex = 0;
+              await mifareClassic.writeBlock(
+                  blockIndex: blockIndex, data: data);
 
-            Fluttertoast.showToast(msg: 'Data emitted successfully');
+              Fluttertoast.showToast(msg: 'Data emitted successfully');
 
-            Uint8List payload = message.records.first.payload;
-            String text = String.fromCharCodes(payload);
+              // Uint8List payload = message.records.first.payload;
+              // String text = String.fromCharCodes(payload);
 
-            Fluttertoast.showToast(msg: "Written data: $text");
+              // Fluttertoast.showToast(msg: "Written data: $text");
+            }
           } catch (e) {
             Fluttertoast.showToast(msg: 'Error emitting NFC data: $e');
           }
