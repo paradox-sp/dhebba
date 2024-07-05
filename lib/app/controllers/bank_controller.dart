@@ -6,14 +6,16 @@ import '/app/controllers/controller.dart';
 // import 'package:flutter/widgets.dart';
 
 class BankController extends Controller {
-  String get baseUrl => getEnv('API_BASE_URL');
+  // String get Url => getEnv('API_BASE_URL');
+  // String Url = Backpack.instance.read('baseurl');
   onTapload() async {
     int userid = await NyStorage.read("userid");
-    await launchUrl(
-        Uri.parse(baseUrl + '/bank/load_with_bank_account/${userid}'));
+    String Url = await NyStorage.read("baseurl");
+    await launchUrl(Uri.parse(Url + '/bank/load_with_bank_account/${userid}'));
   }
 
   onTapsend() async {
-    await launchUrl(Uri.parse(baseUrl + "/topup/send_amount"));
+    String Url = await NyStorage.read("baseurl");
+    await launchUrl(Uri.parse(Url + "/topup/send_amount"));
   }
 }

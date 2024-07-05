@@ -8,6 +8,8 @@ import 'package:latlong2/latlong.dart';
 // import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math';
 import 'dart:async';
+import 'package:geolocator/geolocator.dart';
+
 // import 'package:location/location.dart';
 
 class MapPage extends NyStatefulWidget {
@@ -28,6 +30,7 @@ class _MapPageState extends NyState<MapPage> {
   double maxLat = 90.0;
   double minLong = -180.0;
   double maxLong = 180.0;
+  List<Marker> _userMarkers = [];
 
   @override
   void initState() {
@@ -35,23 +38,8 @@ class _MapPageState extends NyState<MapPage> {
     _mapController = MapController();
     _initializeMarker();
     startMovingMarker();
+    // _updateLocation();
   }
-
-  // Future<bool> requestPermission() async {
-  //   final permission = await location.requestPermission();
-  //   return permission == PermissionStatus.granted;
-  // }
-
-  // Future<LocationData> getCurrentLocation() async {
-  //   final serviceEnabled = await location.serviceEnabled();
-  //   if (!serviceEnabled) {
-  //     final result = await location.requestService();
-  //     if (!result) {
-  //       throw Exception('GPS service not enabled');
-  //     }
-  //   }
-  //   return await location.getLocation();
-  // }
 
   Future<void> _initializeMarker() async {
     setState(() {
@@ -93,13 +81,65 @@ class _MapPageState extends NyState<MapPage> {
         height: 80.0,
         point: newPosition,
         child: Container(
-          child: Icon(
-            Icons.bus_alert_outlined,
-            color: Colors.red,
+          child: IconButton(
+            icon: Icon(
+              Icons.bus_alert_outlined,
+              color: Colors.red,
+            ), // Replace this with your icon
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    backgroundColor: const Color.fromARGB(28, 0, 0, 0),
+                    title: Text('Bus Details'),
+                    content: Column(
+                      children: <Widget>[
+                        Text(
+                            'Latitude: ${currentPosition.latitude}'), // Replace with your latitude
+                        Text(
+                            'Longitude: ${currentPosition.longitude}'), // Replace with your longitude
+                        // Add more details here
+                      ],
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: Text('Close'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
           ),
         ),
       );
     });
+  }
+
+  Future<void> _updateLocation() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.whileInUse ||
+        permission == LocationPermission.always) {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      _mapController.move(LatLng(position.latitude, position.longitude), 15.0);
+      setState(() {
+        _userMarkers.clear();
+        _userMarkers.add(Marker(
+            width: 80.0,
+            height: 80.0,
+            point: LatLng(position.latitude, position.longitude),
+            child: const Icon(
+              Icons.circle_sharp,
+              color: Colors.blue,
+              size: 20,
+            )));
+      });
+    }
   }
 
   @override
@@ -117,10 +157,11 @@ class _MapPageState extends NyState<MapPage> {
             // Move the layers inside MapOptions
             children: [
               TileLayer(
+                // tileProvider: FileTileProvider(),
                 urlTemplate: getEnv('MAP_URL'),
-                // subdomains: const ['a', 'b', 'c'],
+                subdomains: const ['a', 'b', 'c'],
               ),
-              MarkerLayer(markers: _markers),
+              MarkerLayer(markers: [..._userMarkers, ..._markers]),
               // PolylineLayer(
               //   polylines: [
               //     Polyline(
@@ -131,68 +172,10 @@ class _MapPageState extends NyState<MapPage> {
           )
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () async {
-      //     if (await requestPermission()) {
-      //       final locationData = await getCurrentLocation();
-      //       setState(() {
-      //         currentLocation = LatLng(locationData.latitude!, locationData.longitude!);
-      //         markers.add(Marker(
-      //           width: 80.0,
-      //           height: 80.0,
-      //           point: currentLocation!,
-      //           builder: (ctx) => Icon(Icons.location_on, color: Colors.red),
-      //         ));
-      //       });
-      //     }
-      //   },
-      //   child: Icon(Icons.location_searching),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _updateLocation,
+        child: Icon(Icons.location_searching),
+      ),
     );
-    // if (_isLoading) const Center(child: CircularProgressIndicator()),
-    // Positioned(
-    //   top: 20.0,
-    //   right: 20.0,
-    //   child: Container(
-    //     padding: const EdgeInsets.all(8.0),
-    //     color: Colors.white,
-    //     child: Text(
-    //       'Distance: ${_distance.toStringAsFixed(2)} meters',
-    //       style: const TextStyle(fontSize: 16),
-    //     ),
-    //   ),
-    // ),
-    //     Positioned(
-    //       top: 70.0,
-    //       right: 20.0,
-    //       child: _compassDirection != null
-    //           ? Transform.rotate(
-    //               angle: -_compassDirection! *
-    //                   (math.pi / 180), // Convert degrees to radians
-    //               child: const Stack(
-    //                 alignment: Alignment.center,
-    //                 children: [
-    //                   Icon(Icons.explore,
-    //                       size: 60, color: Colors.black), // Compass icon
-    //                   CustomPaint(
-    //                     size: Size(60, 60), // Match the icon size
-    //                     // painter:
-    //                     //     NorthIndicatorPainter(), // Custom painter for north indicator
-    //                   ),
-    //                 ],
-    //               ),
-    //             )
-    //           : Icon(Icons.explore,
-    //               color: Colors
-    //                   .grey), // Shows a greyed-out icon if the compass is not available
-    //     ),
-    //   ],
-    // ),
-    //   floatingActionButton: FloatingActionButton(
-    //     onPressed: _clearRoute,
-    //     tooltip: 'Clear Route',
-    //     child: const Icon(Icons.clear),
-    //   ),
-    // );
   }
 }

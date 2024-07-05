@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/models/user.dart';
+// import 'package:flutter_app/app/models/user.dart';
 import '/config/decoders.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import 'package:http/http.dart' as http;
@@ -9,14 +9,27 @@ class UserApiService extends NyApiService {
   UserApiService({BuildContext? buildContext})
       : super(buildContext, decoders: modelDecoders);
 
-  @override
-  String get baseUrl => getEnv('API_BASE_URL');
+  // Future<void> initBaseUrl() async {
+  //   Url = Backpack.instance.read('baseurl');
+  //   print('baseurl read: $baseUrl');
+  // }
+
+  // init() async {
+  //   String Url = await NyStorage.read("baseurl");
+  // }
+
+  // @override
+
+  // String get Url => getEnv('API_BASE_URL');
+  // String Url = Backpack.instance.read('baseurl');
 
   /// Example API Request
   Future<dynamic> login(String emailOrPhone, String password) async {
     try {
+      String Url = await NyStorage.read("baseurl");
+      print('Making request to: ${Url + "/auth/signin/"}');
       var response = await http.post(
-        Uri.parse(baseUrl + "/auth/signin/"),
+        Uri.parse(Url + "/auth/signin/"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -48,10 +61,11 @@ class UserApiService extends NyApiService {
 
   Future<dynamic> getUserDetail() async {
     try {
+      String Url = await NyStorage.read("baseurl");
       int userid = await NyStorage.read("userid");
       print(userid);
       var response = await http.get(
-        Uri.parse(baseUrl + '/fare/user/${userid}'),
+        Uri.parse(Url + '/fare/user/${userid}'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -71,8 +85,9 @@ class UserApiService extends NyApiService {
   Future<dynamic> signup(String firstName, String lastName, String number,
       String email, String password1, String password2) async {
     try {
+      String Url = await NyStorage.read("baseurl");
       var response = await http.post(
-        Uri.parse(baseUrl + "/auth/signup/"),
+        Uri.parse(Url + "/auth/signup/"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -95,10 +110,11 @@ class UserApiService extends NyApiService {
 
   Future<dynamic> getUserstatement() async {
     try {
+      String Url = await NyStorage.read("baseurl");
       int userid = await NyStorage.read("userid");
       print(userid);
       var response = await http.get(
-        Uri.parse(baseUrl + '/fare/user_history/${userid}'),
+        Uri.parse(Url + '/fare/user_history/${userid}'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

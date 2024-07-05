@@ -1,3 +1,5 @@
+import 'package:flutter_app/routes/guards/auth_route_guard.dart';
+
 import '/resources/pages/signup_page.dart';
 import 'package:flutter_app/resources/pages/account_page.dart';
 
@@ -34,9 +36,10 @@ appRouter() => nyRoutes((router) {
       //
       //   router.route(AccountPage.path, (context) => AccountPage());
       // });
-      router.route(NavPage.path, (context) => NavPage(), initialRoute: true);
+      router.route(NavPage.path, (context) => NavPage(), authPage: true);
       router.route(MapPage.path, (context) => MapPage());
-      router.route(SigninPage.path, (context) => SigninPage());
+      router.route(SigninPage.path, (context) => SigninPage(),
+          initialRoute: true);
       router.route(NfcPage.path, (context) => NfcPage());
       router.route(MainPage.path, (context) => MainPage());
       router.route(AppusagePage.path, (context) => AppusagePage());

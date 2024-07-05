@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/resources/pages/nav_page.dart';
 import '../../resources/pages/about_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 
@@ -18,6 +19,6 @@ class AuthRouteGuard extends NyRouteGuard {
 
   @override
   redirectTo(BuildContext? context, NyArgument? data) async {
-    await routeTo(AboutPage.path);
+    await routeTo(NavPage.path);
   }
 }

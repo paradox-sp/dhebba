@@ -1,13 +1,7 @@
-import 'dart:convert';
-import 'dart:math';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/bootstrap/helpers.dart';
-import 'package:nfc_manager/nfc_manager.dart';
-import 'package:nfc_manager/platform_tags.dart';
 import 'package:nylo_framework/nylo_framework.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:flutter_app/config/theme.dart';
+import 'dart:typed_data';
+import 'package:nfc_host_card_emulation/nfc_host_card_emulation.dart';
 
 class NfcPage extends NyStatefulWidget {
   static const path = '/nfc';
@@ -16,140 +10,122 @@ class NfcPage extends NyStatefulWidget {
 }
 
 class _NfcPageState extends NyState<NfcPage> with TickerProviderStateMixin {
-  late AnimationController _controller;
-  late List<Widget> _circles;
+  late NfcState _nfcState;
+  late List<int> paydata;
+  final port = 0;
+  bool apduAdded = false;
+  NfcApduCommand? nfcApduCommand;
 
   @override
-  init() async {
-    super.init();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    )..repeat();
-    _circles = List.generate(1, (i) => _buildCircle(i));
+  boot() async {
+    _nfcState = await NfcHce.checkDeviceNfcState();
+
+    if (_nfcState == NfcState.enabled) {
+      await NfcHce.init(
+        // AID that match at least one aid-filter in apduservice.xml
+        // In my case it is A000DADADADADA.
+        aid: Uint8List.fromList([0xF0, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06]),
+        // next parameter determines whether APDU responses from the ports
+        // on which the connection occurred will be deleted.
+        // If `true`, responses will be deleted, otherwise won't.
+        permanentApduResponses: true,
+        // next parameter determines whether APDU commands received on ports
+        // to which there are no responses will be added to the stream.
+        // If `true`, command won't be added, otherwise will.
+        listenOnlyConfiguredPorts: false,
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // portController.text = port.toString();
+    initUserPhone();
+    NfcHce.stream.listen((command) {
+      setState(() => nfcApduCommand = command);
+    });
   }
 
   @override
   void dispose() {
-    _controller
-        .dispose(); // Dispose of the AnimationController when the widget is disposed
     super.dispose();
   }
 
-  /// Use boot if you need to load data before the [view] is rendered.
-  // @override
-  // boot() async {
-  //
-  // }
-  Widget _buildCircle(int index) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        var screenSize = MediaQuery.of(context).size;
-        var maxRadius =
-            sqrt(pow(screenSize.width, 2) + pow(screenSize.height, 2));
-        var radius = (1 - _controller.value) * maxRadius / 2 * (index + 1);
-        return Positioned(
-          top: radius,
-          bottom: radius,
-          left: radius,
-          right: radius,
-          child: Opacity(
-            opacity: max(1 - _controller.value * (index + 1), 0),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(width: 80),
-              ),
-              width: radius * 2,
-              height: radius * 2,
-            ),
-          ),
-        );
-      },
-    );
+  void initUserPhone() async {
+    final userphone = await NyStorage.read("userphone");
+    print(userphone);
+    paydata = userphone.toString().split('').map(int.parse).toList();
+    print(paydata);
   }
 
   @override
-  Widget view(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('NFC'),
-      // ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Stack(
-            alignment: Alignment.center,
-            children: _circles,
-          ),
-          ElevatedButton(
-            onPressed: _startNFCWriting,
-            child: Text(
-              'Push',
-              style: TextStyle(
-                color: ThemeColor.get(context)
-                    .primaryContent // Color - primary content
-                ,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
+      body: _nfcState == NfcState.enabled
+          ? Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'NFC State is ${_nfcState.name}',
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 200,
+                    width: 300,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(
+                          apduAdded
+                              ? Color.fromARGB(255, 0, 0, 0)
+                              : Color.fromARGB(255, 255, 255, 255),
+                        ),
+                        shape: WidgetStateProperty.all(CircleBorder()),
+                      ),
+                      onPressed: null,
+                      onLongPress: () async {
+                        if (apduAdded == false) {
+                          await NfcHce.addApduResponse(port, paydata);
+                        } else {
+                          await NfcHce.removeApduResponse(port);
+                        }
+
+                        setState(() => apduAdded = !apduAdded);
+                      },
+                      child: FittedBox(
+                        child: Text(
+                          apduAdded ? 'push to pay' : 'release',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 26,
+                            color: apduAdded ? Colors.white : Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  if (nfcApduCommand != null)
+                    Text(
+                      // 'You listened to the stream and received the '
+                      // 'following command on the port ${nfcApduCommand!.port}:\n'
+                      // '${nfcApduCommand!.command}\n'
+                      // 'with additional data ${nfcApduCommand!.data}',
+                      'Scan succesful\n${nfcApduCommand!.command}',
+                      style: const TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                ],
+              ),
+            )
+          : Center(
+              child: Text(
+                'Oh no...\nNFC is ${_nfcState.name}',
+                style: const TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
               ),
             ),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black,
-              backgroundColor:
-                  Colors.transparent, // change the text color as needed
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(50),
-              side: BorderSide(
-                  color: ThemeColor.get(context).primaryContent,
-                  // color: Color.fromARGB(255, 28, 108, 173),
-                  width: 0.5), // add a border if needed
-            ),
-          ),
-        ],
-      ),
     );
-  }
-
-  void _startNFCWriting() async {
-    try {
-      // Check if NFC is available on the device or not.
-      bool isAvailable = await NfcManager.instance.isAvailable();
-
-// If NFC is available, start a session to listen for NFC tags.
-      if (isAvailable) {
-        NfcManager.instance.startSession(onDiscovered: (NfcTag tag) async {
-          try {
-            // When an NFC tag is discovered, we check if it supports NDEF technology.
-            // If it supports NDEF, create an NDEF message and write it to the tag.
-            // NdefMessage message =
-            //     NdefMessage([NdefRecord.createText('Hello, NFC!')]);
-            // await Ndef.from(tag)?.write(message);
-            MifareClassic? mifareClassic = MifareClassic.from(tag);
-            if (mifareClassic != null) {
-              Uint8List data = Uint8List.fromList(
-                  utf8.encode('Hello, NFC!')); // convert string to Uint8List
-              int blockIndex = 0;
-              await mifareClassic.writeBlock(
-                  blockIndex: blockIndex, data: data);
-
-              Fluttertoast.showToast(msg: 'Data emitted successfully');
-
-              // Uint8List payload = message.records.first.payload;
-              // String text = String.fromCharCodes(payload);
-
-              // Fluttertoast.showToast(msg: "Written data: $text");
-            }
-          } catch (e) {
-            Fluttertoast.showToast(msg: 'Error emitting NFC data: $e');
-          }
-        });
-      } else {
-        Fluttertoast.showToast(msg: 'NFC not available.');
-      }
-    } catch (e) {
-      Fluttertoast.showToast(msg: 'Error writing to NFC: $e');
-    }
   }
 }

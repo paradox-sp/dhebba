@@ -62,6 +62,7 @@ class _AccountPageState extends NyState<AccountPage> {
             ElevatedButton.icon(
               onPressed: () async {
                 await Auth.remove();
+                NyStorage.deleteCollection("userid");
                 routeTo(SigninPage.path,
                     navigationType: NavigationType.pushAndForgetAll);
               },

@@ -40,16 +40,16 @@ class _AboutPageState extends NyState<AboutPage> {
   @override
   Widget view(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Hello World".tr()),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: widget.controller.showAbout,
-            icon: const Icon(Icons.info_outline),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text("Hello World".tr()),
+      //   centerTitle: true,
+      //   actions: [
+      //     IconButton(
+      //       onPressed: widget.controller.showAbout,
+      //       icon: const Icon(Icons.info_outline),
+      //     ),
+      //   ],
+      // ),
       body: SafeAreaWidget(
         child: Center(
           child: Column(
