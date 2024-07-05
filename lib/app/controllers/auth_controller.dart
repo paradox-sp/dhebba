@@ -49,6 +49,7 @@ class LoginController extends NyController {
         // Navigator.pushReplacementNamed(context, '/nav');
       } else {
         print('Failed to login: ${jsonResponse['error']}');
+        Fluttertoast.showToast(msg: '${jsonResponse['error']}');
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');

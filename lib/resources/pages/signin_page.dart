@@ -4,6 +4,7 @@ import 'package:flutter_app/resources/pages/signup_page.dart';
 import 'package:nylo_framework/nylo_framework.dart';
 import '../../app/controllers/auth_controller.dart';
 // import '../../app/models/user.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class SigninPage extends NyStatefulWidget {
   static const path = '/signin';
@@ -20,8 +21,22 @@ class _SigninPageState extends NyState<SigninPage> {
 
   // final AuthController _authController = AuthController();
 
-  @override
-  init() async {}
+  // @override
+  // init() async {
+  //   var status = await Permission.storage.status;
+  //   if (status.isGranted) {
+  //     print('Storage permission is already granted');
+  //   } else if (status.isPermanentlyDenied) {
+  //     print('Storage permission is permanently denied');
+  //   } else {
+  //     status = await Permission.storage.request();
+  //     if (status.isGranted) {
+  //       print('Storage permission is granted');
+  //     } else {
+  //       print('Storage permission is denied');
+  //     }
+  //   }
+  // }
 
   /// Use boot if you need to load data before the [view] is rendered.
   // @override
@@ -67,8 +82,15 @@ class _SigninPageState extends NyState<SigninPage> {
                         child: Text('Save'),
                         onPressed: () {
                           print('Saved text: ${_textController.text}');
-                          NyStorage.store("baseurl", "${_textController.text}");
-                          Navigator.of(context).pop();
+
+                          // NyStorage.store('baseurl', '${_textController.text}',
+                          //     inBackpack: true);
+                          // Backpack.instance
+                          //     .set('baseurl', '${_textController.text}');
+
+                          Navigator.of(context).pop(NyStorage.store(
+                              "baseurl", "${_textController.text}",
+                              inBackpack: true));
                         },
                       ),
                     ],
